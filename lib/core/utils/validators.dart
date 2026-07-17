@@ -19,11 +19,13 @@ class Validators {
   static String? validatePassword(String? value) {
     final req = validateRequired(value, 'Contraseña');
     if (req != null) return req;
-    if (value!.length < 8)
+    if (value!.length < 8) {
       return 'La contraseña debe tener al menos 8 caracteres';
+    }
     final bytes = utf8.encode(value);
-    if (bytes.length > 72)
+    if (bytes.length > 72) {
       return 'La contraseña excede el máximo permitido (72 bytes)';
+    }
     return null;
   }
 

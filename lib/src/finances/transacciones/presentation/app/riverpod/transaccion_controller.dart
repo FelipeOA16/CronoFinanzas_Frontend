@@ -1,5 +1,4 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import '../../../../../../core/network/api_client.dart';
 import '../../../../../app/di/providers.dart';
 import '../../../domain/entities/categoria.dart';
 import '../../../domain/entities/transaccion.dart';
@@ -112,7 +111,7 @@ class TransaccionController extends StateNotifier<TransaccionState> {
     final catsResult = await _getCategorias();
     final cats = catsResult.isFail
         ? <Categoria>[]
-        : catsResult.data as List<Categoria>;
+        : catsResult.data;
 
     final txResult = await _getTransacciones(
       cuentaId: cuentaId,
@@ -130,7 +129,7 @@ class TransaccionController extends StateNotifier<TransaccionState> {
         previousCategorias: cats,
       );
     } else {
-      final raw = txResult.data as Map<String, dynamic>;
+      final raw = txResult.data;
       state = TransaccionLoaded(
         items: List<Transaccion>.from(raw['items'] as List),
         total: raw['total'] as int,
@@ -174,7 +173,7 @@ class TransaccionController extends StateNotifier<TransaccionState> {
       );
       return false;
     }
-    final updated = [result.data as Transaccion, ..._currentItems];
+    final updated = [result.data, ..._currentItems];
     state = TransaccionOperationSuccess(
       items: updated,
       total: updated.length,
@@ -218,7 +217,7 @@ class TransaccionController extends StateNotifier<TransaccionState> {
       return false;
     }
     final updated = _currentItems
-        .map((t) => t.id == id ? result.data as Transaccion : t)
+        .map((t) => t.id == id ? result.data : t)
         .toList();
     state = TransaccionOperationSuccess(
       items: updated,

@@ -1,6 +1,4 @@
-import 'package:dio/dio.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import '../../../../../core/network/api_client.dart';
 import '../../../../app/di/providers.dart';
 import '../../../../auth/presentation/widgets/login_form.dart'
     show authControllerProvider;

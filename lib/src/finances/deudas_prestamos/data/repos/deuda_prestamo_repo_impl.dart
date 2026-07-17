@@ -117,13 +117,18 @@ class DeudaPrestamoRepositoryImpl implements DeudaPrestamoRepository {
   }
 
   Result<T> _fail<T>(Object e) {
-    if (e is NetworkException) return Result.fail(NetworkFailure(e.message));
-    if (e is UnauthorizedException)
+    if (e is NetworkException) {
+      return Result.fail(NetworkFailure(e.message));
+    }
+    if (e is UnauthorizedException) {
       return Result.fail(UnauthorizedFailure(e.message));
-    if (e is ValidationException)
+    }
+    if (e is ValidationException) {
       return Result.fail(ValidationFailure(e.message));
-    if (e is ServerException)
+    }
+    if (e is ServerException) {
       return Result.fail(ServerFailure(e.message, e.statusCode));
+    }
     return Result.fail(UnknownFailure(e.toString()));
   }
 }

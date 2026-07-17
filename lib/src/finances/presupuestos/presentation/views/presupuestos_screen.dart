@@ -256,23 +256,27 @@ class _PresupuestosScreenState extends ConsumerState<PresupuestosScreen> {
         ],
       ),
     );
-    if (confirm == true && mounted) {
-      final ok = await ref
-          .read(presupuestoControllerProvider.notifier)
-          .deletePresupuesto(p.id, mes: _mes, anio: _anio);
-      if (!ok && mounted) {
-        final errState = ref.read(presupuestoControllerProvider);
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
-            content: Text(
-              errState is PresupuestoError
-                  ? errState.message
-                  : 'Error al eliminar',
-            ),
-            backgroundColor: AppColors.gasto,
+    if (confirm != true || !context.mounted) {
+      return;
+    }
+    final ok = await ref
+        .read(presupuestoControllerProvider.notifier)
+        .deletePresupuesto(p.id, mes: _mes, anio: _anio);
+    if (!context.mounted) {
+      return;
+    }
+    if (!ok) {
+      final errState = ref.read(presupuestoControllerProvider);
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text(
+            errState is PresupuestoError
+                ? errState.message
+                : 'Error al eliminar',
           ),
-        );
-      }
+          backgroundColor: AppColors.gasto,
+        ),
+      );
     }
   }
 }

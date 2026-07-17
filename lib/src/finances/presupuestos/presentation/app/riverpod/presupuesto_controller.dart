@@ -1,5 +1,4 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import '../../../../../../core/network/api_client.dart';
 import '../../../../../app/di/providers.dart';
 import '../../../data/datasources/presupuesto_remote_data_src.dart';
 import '../../../data/repos/presupuesto_repo_impl.dart';
@@ -74,9 +73,7 @@ class PresupuestoController extends StateNotifier<PresupuestoState> {
       state = PresupuestoError(result.failure.message, previous: _current);
       return false;
     }
-    state = PresupuestoLoaded([
-      ...result.data == null ? _current : [result.data, ..._current],
-    ]);
+    state = PresupuestoLoaded([result.data, ..._current]);
     await loadPresupuestos(mes: mes, anio: anio);
     return true;
   }

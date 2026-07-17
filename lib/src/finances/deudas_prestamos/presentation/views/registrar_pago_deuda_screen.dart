@@ -149,8 +149,9 @@ class _RegistrarPagoDeudaScreenState
                 validator: (v) {
                   final n = double.tryParse(v ?? '');
                   if (n == null || n <= 0) return 'Monto invalido';
-                  if (n > widget.item.saldoPendiente)
+                  if (n > widget.item.saldoPendiente) {
                     return 'No puede superar el saldo pendiente';
+                  }
                   return null;
                 },
               ),

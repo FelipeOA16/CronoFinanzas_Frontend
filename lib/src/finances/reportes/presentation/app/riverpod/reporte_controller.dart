@@ -1,5 +1,4 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import '../../../../../../core/network/api_client.dart';
 import '../../../../../app/di/providers.dart';
 import '../../../data/datasources/reporte_remote_data_src.dart';
 import '../../../data/repos/reporte_repo_impl.dart';

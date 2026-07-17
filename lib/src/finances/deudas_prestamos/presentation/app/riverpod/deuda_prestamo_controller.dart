@@ -4,7 +4,6 @@ import '../../../data/datasources/deuda_prestamo_remote_data_src.dart';
 import '../../../data/repos/deuda_prestamo_repo_impl.dart';
 import '../../../domain/entities/deuda_prestamo.dart';
 import '../../../domain/entities/deuda_prestamo_resumen.dart';
-import '../../../domain/entities/pago_deuda_prestamo.dart';
 import '../../../domain/repos/deuda_prestamo_repo.dart';
 import 'deuda_prestamo_state.dart';
 

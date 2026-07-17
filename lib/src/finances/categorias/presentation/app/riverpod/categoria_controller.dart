@@ -4,7 +4,6 @@ import '../../../../../../core/config/endpoints.dart';
 import '../../../../../../core/network/api_client.dart';
 import '../../../../../app/di/providers.dart';
 import '../../../../../finances/transacciones/data/models/categoria_model.dart';
-import '../../../../../finances/transacciones/domain/entities/categoria.dart';
 import 'categoria_state.dart';
 
 // ─── DI ──────────────────────────────────────────────────────────────────────
