@@ -31,6 +31,20 @@ dependencies:
   flutter:
     sdk: flutter
 
+  # State management
+  flutter_riverpod: ^2.6.1
+
+  # HTTP client
+  dio: ^5.7.0
+
+  # Secure storage for tokens
+  flutter_secure_storage: ^9.2.2
+
+  # Google Fonts (Inter)
+  google_fonts: ^6.2.1
+
+  # Charts
+  fl_chart: ^0.69.0
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
@@ -57,6 +71,8 @@ flutter:
   # included with your application, so that you can use the icons in
   # the material Icons class.
   uses-material-design: true
+  assets:
+    - assets/brand/
 
   # To add assets to your application, add an assets section, like this:
   # assets:
