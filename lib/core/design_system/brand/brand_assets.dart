@@ -2,9 +2,13 @@ abstract class BrandAssets {
   static const _brand = 'assets/brand';
 
   static const logoHorizontal = '$_brand/logo/logo_horizontal.png';
-  static const logoVertical = '$_brand/logo/logo_vertical.png';
   static const logoSymbol = '$_brand/logo/logo_symbol.png';
-  static const appIcon = '$_brand/logo/app_icon.png';
+  static const logoWordmark = '$_brand/logo/logo_wordmark.png';
+  static const appIcon = '$_brand/app_icon/app_icon_master.png';
+  static const appIconMaster = '$_brand/app_icon/app_icon_master.png';
+  static const softBackground = '$_brand/backgrounds/bg_soft_pattern.png';
+  static const splashLogo = '$_brand/splash/splash_logo.png';
+  static const socialOgImage = '$_brand/social/og_image.png';
 
   static const yachayDefault = '$_brand/yachay/yachay_default.png';
   static const yachayHappy = '$_brand/yachay/yachay_happy.png';

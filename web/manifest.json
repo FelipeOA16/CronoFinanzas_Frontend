@@ -1,12 +1,12 @@
 {
-    "name": "frontend",
-    "short_name": "frontend",
+    "name": "CronoFinanzas",
+    "short_name": "CronoFinanzas",
     "start_url": ".",
     "display": "standalone",
-    "background_color": "#0175C2",
-    "theme_color": "#0175C2",
-    "description": "A new Flutter project.",
-    "orientation": "portrait-primary",
+    "background_color": "#F6F2E9",
+    "theme_color": "#4F6F52",
+    "description": "Gestiona, comprende y mejora tu relación con el dinero.",
+    "orientation": "any",
     "prefer_related_applications": false,
     "icons": [
         {
