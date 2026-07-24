@@ -62,3 +62,6 @@ android/app/*.keystore
 
 # Logs
 *.log
+
+# Firebase local cache
+.firebase/
