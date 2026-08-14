@@ -1,13 +1,10 @@
 <!-- FUENTE CANÓNICA DE ALCANCE V1. Aprobado por Felipe el 12 de agosto de 2026. No modificar decisiones de alcance sin aplicar el gobierno de cambios de la sección 16. -->
 
-**CRONOFINANZAS**
-
-Contrato de alcance y salida  
-de la Versión 1
+# CronoFinanzas — Contrato de alcance y salida de la Versión 1
 
 Frontera funcional, técnica, visual y operacional para cerrar el MVP y convertirlo en un producto entregable
 
-| **ESTADO DEL DOCUMENTO Borrador revisado v0.2. Incorpora decisiones de alcance confirmadas por Felipe. Sirve como fuente de verdad para completar una V1 candidata interna, validarla con una beta cerrada y autorizar la salida final después de corregir bloqueadores.** |
+| **ESTADO DEL DOCUMENTO Aprobado y cerrado v0.2. Incorpora decisiones de alcance confirmadas por Felipe. Es la fuente de verdad para completar una V1 candidata interna, validarla con una beta cerrada y autorizar la salida final después de corregir bloqueadores.** |
 |----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 
 | **Dato**                 | **Definición**                                                                   |
@@ -160,7 +157,7 @@ Un recorrido esencial se aprueba solo si puede completarse de principio a fin en
 | R1     | Crear y recuperar acceso           | Registrarse, verificar correo, iniciar sesión, cerrar sesión y restablecer contraseña.    | Acceso recuperable y sesión segura.                                                              |
 | R2     | Configurar finanzas                | Crear cuenta y categorías iniciales.                                                      | Cuenta lista, saldo visible y categorías propias.                                                |
 | R3     | Registrar dinero                   | Crear ingreso y gasto; editar o eliminar según reglas.                                    | Saldo, Home, presupuesto y reporte coinciden.                                                    |
-| R4     | Transferir                         | Mover dinero entre dos cuentas propias.                                                   | Patrimonio no cambia; saldos individuales sí.                                                    |
+| R4     | Transferir                         | Mover dinero entre dos cuentas propias.                                                   | El saldo total de las cuentas activas no cambia; los saldos individuales sí.                                                    |
 | R5     | Controlar presupuesto              | Crear presupuesto y registrar gastos del periodo.                                         | Disponible y progreso se actualizan correctamente.                                               |
 | R6     | Gestionar deuda                    | Crear deuda, pagar parcialmente y revertir pago.                                          | Saldo pendiente, cuenta y movimiento se reconcilian.                                             |
 | R7     | Gestionar préstamo                 | Registrar dinero por cobrar, cobrar y revertir.                                           | Cobro impacta cuenta y saldo pendiente una vez.                                                  |
@@ -413,17 +410,12 @@ Las decisiones de alcance D1–D6 ya fueron confirmadas por Felipe y deben guiar
 
 ## 14.1 Control de preparación para beta
 
-> ☐ La V1 candidata interna cumple D1–D6 y los recorridos R1–R12.Apruebo las recomendaciones D1–D10 sin cambios.
->
-> ☐ Se definieron D7–D10 y están listos los medios de distribución y soporte.Apruebo el contrato con cambios anotados.
->
-> ☐ Autorizo iniciar la beta cerrada con 5–10 personas.Requiero una segunda versión antes de aprobar.
+**Aprobación de alcance registrada:** Felipe aprobó el contrato V1 v0.2 sin cambios de alcance el 12 de agosto de 2026.
 
-Cambios solicitados: \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
-
-\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
-
-Aprobado por: \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_ Fecha: \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_ Versión: \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
+- [x] D1–D6 y la frontera R1–R12 quedan aprobados como obligación de la V1.
+- [ ] La V1 candidata interna cumple D1–D6 y los recorridos R1–R12.
+- [ ] Se definieron D7–D10 y están listos los medios de distribución y soporte.
+- [ ] Felipe autoriza iniciar la beta cerrada con 5–10 personas.
 
 # 15. Backlog posterior a V1
 
