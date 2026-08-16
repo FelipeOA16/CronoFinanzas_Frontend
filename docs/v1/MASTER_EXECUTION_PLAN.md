@@ -12,7 +12,7 @@
 | Estado del contrato | Aprobado y cerrado |
 | Versión candidata actual | Ninguna |
 | Repositorio canónico | `FelipeOA16/CronoFinanzas_Frontend` |
-| Rama documental actual | `agent/v1-master-execution-plan` |
+| Rama documental actual | `agent/v1-baseline` |
 | Ejecutor autorizado | Codex |
 | Propietario del producto | Felipe Ordoñez |
 
@@ -172,15 +172,15 @@ flowchart TD
 
 - **Problema:** no existe una fotografía repetible de análisis, pruebas, builds, migraciones y despliegues.
 - **Experiencia actual:** una corrección puede parecer exitosa aunque rompa otra plataforma.
-- **Modificación:** inventario de comandos, resultados, versiones, pruebas y fallos iniciales.
+- **Modificación:** inventario de comandos, resultados, versiones, pruebas y fallos iniciales; CI mínima para repetirlos en GitHub Actions.
 - **Beneficio:** medir progreso real desde el mismo punto.
 - **Riesgo:** confundir fallos de ambiente con defectos de producto.
 - **Comprobación:** ejecución limpia de `flutter analyze`, `flutter test`, `pytest`, compile/import, Alembic heads y builds posibles.
 - **Repositorio:** ambos.
 - **Estado:** En ejecución.
 - **Dependencia:** B00 terminada.
-- **Evidencia:** [`B01_BASELINE_2026-08-15.md`](./EVIDENCE/B01_BASELINE_2026-08-15.md). Backend: 5 pruebas aprobadas, 1 fallida; frontend bloqueado por ausencia de Flutter; Docker no disponible.
-- **Decisión de Felipe:** ninguna por ahora.
+- **Evidencia:** [`B01_BASELINE_2026-08-15.md`](./EVIDENCE/B01_BASELINE_2026-08-15.md). Backend local: 5 pruebas aprobadas, 1 fallida. CI añadida en las ramas del bloque; resultados remotos pendientes.
+- **Decisión de Felipe:** autorizó incorporar CI mínima el 15 de agosto de 2026.
 
 ### B02 — Seguridad, exposición y aislamiento
 
@@ -517,12 +517,13 @@ Antes de liberación:
 | Bloque | Rama | Commits | PR |
 |---|---|---|---|
 | B00 | `agent/v1-master-execution-plan` / `agent/link-v1-master-plan` | Frontend `72a7359c`; Backend `4aa17ece` | Frontend #2 y Backend #2, integrados |
+| B01 | `agent/v1-baseline` en ambos repositorios | Pendientes de cierre | Frontend #3 en borrador; Backend PR pendiente |
 
 ## 13. Próximo bloque recomendado
 
-1. Completar B01 instalando/seleccionando los entornos de Flutter, Docker e iOS.
-2. Revisar la falla smoke y la reproducibilidad de dependencias sin corregir todavía reglas funcionales.
-3. Preparar B02 y B03 después de cerrar la línea base.
+1. Ejecutar la CI de B01 y registrar resultados de Flutter, Docker e iOS.
+2. Clasificar los fallos reproducidos y cerrar la línea base sin mezclar sus correcciones.
+3. Preparar B02 y B03 después de cerrar B01.
 
 ## 14. Historial de estados
 
@@ -534,3 +535,4 @@ Antes de liberación:
 
 | 2026-08-15 | B00 | En revisión → Terminado | PR #2 integrado en frontend y backend enlazado al plan canónico |
 | 2026-08-15 | B01 | Pendiente → En ejecución | Checkouts limpios y primera batería backend ejecutada; frontend/Docker pendientes por entorno |
+| 2026-08-15 | B01 | En ejecución | Felipe autorizó CI mínima reproducible para ambos repositorios |
