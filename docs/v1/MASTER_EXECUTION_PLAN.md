@@ -7,7 +7,7 @@
 | Campo | Valor |
 |---|---|
 | Estado general | B01 — Línea base reproducible en revisión |
-| Última actualización | 15 de agosto de 2026 — America/Lima |
+| Última actualización | 16 de agosto de 2026 — America/Lima |
 | Contrato aplicable | [Contrato de alcance y salida V1 v0.2](./CONTRACT_SCOPE_RELEASE_V1_v0.2.md) |
 | Estado del contrato | Aprobado y cerrado |
 | Versión candidata actual | Ninguna |
@@ -40,7 +40,7 @@
 3. Cada bloque usa una rama propia `agent/{descripcion}`.
 4. Solo un bloque puede estar **en ejecución** por repositorio, salvo independencia demostrada y registrada.
 5. Dos agentes o procesos no pueden modificar simultáneamente el mismo bloque o archivo.
-6. Antes de modificar: revisar rama, estado, cambios existentes, commits recientes y archivos afectados.
+6. Antes de modificar: identificar y leer íntegramente las fuentes canónicas y reglas aplicables al bloque; después revisar rama, estado, cambios existentes, commits recientes y archivos afectados. Registrar el alcance documental consultado en la evidencia del bloque.
 7. No sobrescribir cambios locales o remotos no identificados.
 8. Cada bloque debe tener criterios de aceptación y pruebas antes de implementar.
 9. Compilar no equivale a terminar.
@@ -517,7 +517,7 @@ Antes de liberación:
 | Bloque | Rama | Commits | PR |
 |---|---|---|---|
 | B00 | `agent/v1-master-execution-plan` / `agent/link-v1-master-plan` | Frontend `72a7359c`; Backend `4aa17ece` | Frontend #2 y Backend #2, integrados |
-| B01 | `agent/v1-baseline` en ambos repositorios | Pendientes de cierre | Frontend #3 y Backend #3, en borrador |
+| B01 | `agent/v1-baseline` en ambos repositorios | Pendientes de validación remota y cierre | Frontend #3 y Backend #3, en borrador |
 
 ## 13. Próximo bloque recomendado
 
@@ -537,3 +537,4 @@ Antes de liberación:
 | 2026-08-15 | B01 | Pendiente → En ejecución | Checkouts limpios y primera batería backend ejecutada; frontend/Docker pendientes por entorno |
 | 2026-08-15 | B01 | En ejecución | Felipe autorizó CI mínima reproducible para ambos repositorios |
 | 2026-08-15 | B01 | En ejecución → En revisión | Frontend CI completa aprobada; backend reproduce 5 pruebas aprobadas y 1 smoke fallida, con contenedor aprobado |
+| 2026-08-16 | B01 | En revisión | Felipe autorizó corregir la prueba smoke y fijar dependencias; además priorizó leer y documentar las fuentes aplicables antes de cada cambio |
