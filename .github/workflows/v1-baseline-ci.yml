@@ -1,0 +1,83 @@
+name: V1 baseline CI
+
+on:
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: v1-baseline-frontend-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  FLUTTER_VERSION: 3.32.8
+  API_BASE_URL: https://example.invalid
+
+jobs:
+  analyze-test-web-android:
+    name: Analyze, test, web and Android
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: ${{ env.FLUTTER_VERSION }}
+          channel: stable
+          cache: true
+
+      - name: Report toolchain
+        run: flutter --version
+
+      - name: Resolve dependencies
+        run: flutter pub get
+
+      - name: Analyze
+        run: flutter analyze
+
+      - name: Run tests
+        run: flutter test
+
+      - name: Build web release
+        run: flutter build web --release --no-tree-shake-icons --pwa-strategy=none --dart-define=API_BASE_URL=${API_BASE_URL}
+
+      - name: Build Android release APK
+        run: flutter build apk --release --dart-define=API_BASE_URL=${API_BASE_URL}
+
+  build-ios:
+    name: Build iOS without signing
+    runs-on: macos-latest
+    timeout-minutes: 45
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: ${{ env.FLUTTER_VERSION }}
+          channel: stable
+          cache: true
+
+      - name: Resolve dependencies
+        run: flutter pub get
+
+      - name: Build iOS without signing
+        run: flutter build ios --release --no-codesign --dart-define=API_BASE_URL=${API_BASE_URL}
+
+  build-container:
+    name: Build web container
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Build image
+        run: docker build --build-arg API_BASE_URL=${API_BASE_URL} -t cronofinanzas-frontend:baseline .
