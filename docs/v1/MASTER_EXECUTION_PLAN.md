@@ -6,7 +6,7 @@
 
 | Campo | Valor |
 |---|---|
-| Estado general | B01 — Línea base reproducible en ejecución |
+| Estado general | B01 — Línea base reproducible en revisión |
 | Última actualización | 15 de agosto de 2026 — America/Lima |
 | Contrato aplicable | [Contrato de alcance y salida V1 v0.2](./CONTRACT_SCOPE_RELEASE_V1_v0.2.md) |
 | Estado del contrato | Aprobado y cerrado |
@@ -177,9 +177,9 @@ flowchart TD
 - **Riesgo:** confundir fallos de ambiente con defectos de producto.
 - **Comprobación:** ejecución limpia de `flutter analyze`, `flutter test`, `pytest`, compile/import, Alembic heads y builds posibles.
 - **Repositorio:** ambos.
-- **Estado:** En ejecución.
+- **Estado:** En revisión.
 - **Dependencia:** B00 terminada.
-- **Evidencia:** [`B01_BASELINE_2026-08-15.md`](./EVIDENCE/B01_BASELINE_2026-08-15.md). Backend local: 5 pruebas aprobadas, 1 fallida. CI añadida en las ramas del bloque; resultados remotos pendientes.
+- **Evidencia:** [`B01_BASELINE_2026-08-15.md`](./EVIDENCE/B01_BASELINE_2026-08-15.md). Frontend CI aprobada en web, Android, iOS y contenedor. Backend: contenedor y controles estructurales aprobados; 5 pruebas aprobadas y 1 smoke fallida, reproducida localmente y en CI.
 - **Decisión de Felipe:** autorizó incorporar CI mínima el 15 de agosto de 2026.
 
 ### B02 — Seguridad, exposición y aislamiento
@@ -521,9 +521,9 @@ Antes de liberación:
 
 ## 13. Próximo bloque recomendado
 
-1. Ejecutar la CI de B01 y registrar resultados de Flutter, Docker e iOS.
-2. Clasificar los fallos reproducidos y cerrar la línea base sin mezclar sus correcciones.
-3. Preparar B02 y B03 después de cerrar B01.
+1. Revisar y corregir por separado la prueba smoke backend incompatible con las dependencias actuales.
+2. Definir la estrategia de fijación de dependencias backend y dejar CI verde reproducible.
+3. Cerrar B01 y abrir B02 — seguridad, exposición y aislamiento.
 
 ## 14. Historial de estados
 
@@ -536,3 +536,4 @@ Antes de liberación:
 | 2026-08-15 | B00 | En revisión → Terminado | PR #2 integrado en frontend y backend enlazado al plan canónico |
 | 2026-08-15 | B01 | Pendiente → En ejecución | Checkouts limpios y primera batería backend ejecutada; frontend/Docker pendientes por entorno |
 | 2026-08-15 | B01 | En ejecución | Felipe autorizó CI mínima reproducible para ambos repositorios |
+| 2026-08-15 | B01 | En ejecución → En revisión | Frontend CI completa aprobada; backend reproduce 5 pruebas aprobadas y 1 smoke fallida, con contenedor aprobado |
