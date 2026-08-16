@@ -6,8 +6,8 @@
 
 | Campo | Valor |
 |---|---|
-| Estado general | Preparación documental de V1 |
-| Última actualización | 13 de agosto de 2026 — America/Lima |
+| Estado general | B01 — Línea base reproducible en ejecución |
+| Última actualización | 15 de agosto de 2026 — America/Lima |
 | Contrato aplicable | [Contrato de alcance y salida V1 v0.2](./CONTRACT_SCOPE_RELEASE_V1_v0.2.md) |
 | Estado del contrato | Aprobado y cerrado |
 | Versión candidata actual | Ninguna |
@@ -21,7 +21,7 @@
 | Área | Estado | Observación |
 |---|---|---|
 | Alcance | Definido | Contrato V1 v0.2 aprobado |
-| Documentación canónica | En revisión | B00 |
+| Documentación canónica | Vigente | B00 terminado; enlazada desde ambos repositorios |
 | Integridad financiera | Pendiente de prueba completa | Requiere R2–R10 |
 | Seguridad | Riesgo abierto | RLS/exposición Supabase y CORS requieren verificación |
 | Respaldo y recuperación | Bloqueado | Supabase no muestra backups; no existe restauración probada |
@@ -162,9 +162,9 @@ flowchart TD
 - **Comprobación:** comparar R1–R12, D1–D10 y decisiones obligatorias con el DOCX aprobado.
 - **Repositorio:** Frontend.
 - **Rama:** `agent/v1-master-execution-plan`.
-- **Estado:** En revisión.
+- **Estado:** Terminado.
 - **Pruebas:** validación de enlaces, estructura Markdown y revisión de diff.
-- **Evidencia:** commits de los cuatro documentos y PR documental.
+- **Evidencia:** Frontend PR #2 integrado en `72a7359c`; Backend PR #2 integrado en `4aa17ece`.
 - **Decisión de Felipe:** aprobada ejecución de B00.
 - **Terminado cuando:** PR aprobado e integrado sin cambios funcionales.
 
@@ -177,10 +177,10 @@ flowchart TD
 - **Riesgo:** confundir fallos de ambiente con defectos de producto.
 - **Comprobación:** ejecución limpia de `flutter analyze`, `flutter test`, `pytest`, compile/import, Alembic heads y builds posibles.
 - **Repositorio:** ambos.
-- **Estado:** Pendiente.
-- **Dependencia:** B00.
-- **Evidencia:** logs sanitizados y matriz base.
-- **Decisión de Felipe:** ninguna.
+- **Estado:** En ejecución.
+- **Dependencia:** B00 terminada.
+- **Evidencia:** [`B01_BASELINE_2026-08-15.md`](./EVIDENCE/B01_BASELINE_2026-08-15.md). Backend: 5 pruebas aprobadas, 1 fallida; frontend bloqueado por ausencia de Flutter; Docker no disponible.
+- **Decisión de Felipe:** ninguna por ahora.
 
 ### B02 — Seguridad, exposición y aislamiento
 
@@ -516,13 +516,13 @@ Antes de liberación:
 
 | Bloque | Rama | Commits | PR |
 |---|---|---|---|
-| B00 | `agent/v1-master-execution-plan` | `0189341`, `4a8634b`, `a1b003f` y commit de este plan | Pendiente de creación |
+| B00 | `agent/v1-master-execution-plan` / `agent/link-v1-master-plan` | Frontend `72a7359c`; Backend `4aa17ece` | Frontend #2 y Backend #2, integrados |
 
 ## 13. Próximo bloque recomendado
 
-1. Aprobar e integrar B00.
-2. Ejecutar B01 — línea base reproducible.
-3. Preparar B02 y B03 antes de modificaciones funcionales.
+1. Completar B01 instalando/seleccionando los entornos de Flutter, Docker e iOS.
+2. Revisar la falla smoke y la reproducibilidad de dependencias sin corregir todavía reglas funcionales.
+3. Preparar B02 y B03 después de cerrar la línea base.
 
 ## 14. Historial de estados
 
@@ -531,3 +531,6 @@ Antes de liberación:
 | 2026-08-12 | Contrato | Aprobado y cerrado | Felipe confirmó alcance V1 v0.2 |
 | 2026-08-13 | B00 | Pendiente → En ejecución | Felipe autorizó consolidación documental |
 | 2026-08-13 | B00 | En ejecución → En revisión | Documentos canónicos preparados en rama propia |
+
+| 2026-08-15 | B00 | En revisión → Terminado | PR #2 integrado en frontend y backend enlazado al plan canónico |
+| 2026-08-15 | B01 | Pendiente → En ejecución | Checkouts limpios y primera batería backend ejecutada; frontend/Docker pendientes por entorno |
