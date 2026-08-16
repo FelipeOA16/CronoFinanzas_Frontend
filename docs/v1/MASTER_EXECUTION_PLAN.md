@@ -6,7 +6,7 @@
 
 | Campo | Valor |
 |---|---|
-| Estado general | B01 — Línea base reproducible en revisión |
+| Estado general | B01 terminado — B02 listo para preparación |
 | Última actualización | 16 de agosto de 2026 — America/Lima |
 | Contrato aplicable | [Contrato de alcance y salida V1 v0.2](./CONTRACT_SCOPE_RELEASE_V1_v0.2.md) |
 | Estado del contrato | Aprobado y cerrado |
@@ -177,10 +177,10 @@ flowchart TD
 - **Riesgo:** confundir fallos de ambiente con defectos de producto.
 - **Comprobación:** ejecución limpia de `flutter analyze`, `flutter test`, `pytest`, compile/import, Alembic heads y builds posibles.
 - **Repositorio:** ambos.
-- **Estado:** En revisión.
+- **Estado:** Terminado.
 - **Dependencia:** B00 terminada.
-- **Evidencia:** [`B01_BASELINE_2026-08-15.md`](./EVIDENCE/B01_BASELINE_2026-08-15.md). Frontend CI aprobada en web, Android, iOS y contenedor. Backend: contenedor y controles estructurales aprobados; 5 pruebas aprobadas y 1 smoke fallida, reproducida localmente y en CI.
-- **Decisión de Felipe:** autorizó incorporar CI mínima el 15 de agosto de 2026.
+- **Evidencia:** [`B01_BASELINE_2026-08-15.md`](./EVIDENCE/B01_BASELINE_2026-08-15.md). Frontend y backend completamente verdes en CI; backend con 6 pruebas aprobadas, dependencias fijadas y contenedor reproducible.
+- **Decisión de Felipe:** autorizó la CI mínima el 15 de agosto y el cierre técnico el 16 de agosto de 2026.
 
 ### B02 — Seguridad, exposición y aislamiento
 
@@ -517,13 +517,13 @@ Antes de liberación:
 | Bloque | Rama | Commits | PR |
 |---|---|---|---|
 | B00 | `agent/v1-master-execution-plan` / `agent/link-v1-master-plan` | Frontend `72a7359c`; Backend `4aa17ece` | Frontend #2 y Backend #2, integrados |
-| B01 | `agent/v1-baseline` en ambos repositorios | Pendientes de validación remota y cierre | Frontend #3 y Backend #3, en borrador |
+| B01 | `agent/v1-baseline` en ambos repositorios | Frontend `c7fe02cf` más cierre documental; Backend `d93816b1` | Frontend #3 y Backend #3, listos para integrar |
 
 ## 13. Próximo bloque recomendado
 
-1. Revisar y corregir por separado la prueba smoke backend incompatible con las dependencias actuales.
-2. Definir la estrategia de fijación de dependencias backend y dejar CI verde reproducible.
-3. Cerrar B01 y abrir B02 — seguridad, exposición y aislamiento.
+1. Integrar los PR #3 de B01.
+2. Preparar B02 leyendo las fuentes canónicas y levantando el inventario de seguridad, exposición y aislamiento sin modificar producción.
+3. Definir criterios y pruebas negativas de B02 antes de implementar correcciones.
 
 ## 14. Historial de estados
 
@@ -538,3 +538,4 @@ Antes de liberación:
 | 2026-08-15 | B01 | En ejecución | Felipe autorizó CI mínima reproducible para ambos repositorios |
 | 2026-08-15 | B01 | En ejecución → En revisión | Frontend CI completa aprobada; backend reproduce 5 pruebas aprobadas y 1 smoke fallida, con contenedor aprobado |
 | 2026-08-16 | B01 | En revisión | Felipe autorizó corregir la prueba smoke y fijar dependencias; además priorizó leer y documentar las fuentes aplicables antes de cada cambio |
+| 2026-08-16 | B01 | En revisión → Terminado | CI completamente verde en ambos repositorios; prueba smoke, dependencias reproducibles, documentación y diffs verificados |
