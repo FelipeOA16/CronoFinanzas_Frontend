@@ -6,13 +6,13 @@
 
 | Campo | Valor |
 |---|---|
-| Estado general | Preparación documental de V1 |
-| Última actualización | 13 de agosto de 2026 — America/Lima |
+| Estado general | B01 terminado — B02 listo para preparación |
+| Última actualización | 16 de agosto de 2026 — America/Lima |
 | Contrato aplicable | [Contrato de alcance y salida V1 v0.2](./CONTRACT_SCOPE_RELEASE_V1_v0.2.md) |
 | Estado del contrato | Aprobado y cerrado |
 | Versión candidata actual | Ninguna |
 | Repositorio canónico | `FelipeOA16/CronoFinanzas_Frontend` |
-| Rama documental actual | `agent/v1-master-execution-plan` |
+| Rama documental actual | `agent/v1-baseline` |
 | Ejecutor autorizado | Codex |
 | Propietario del producto | Felipe Ordoñez |
 
@@ -21,7 +21,7 @@
 | Área | Estado | Observación |
 |---|---|---|
 | Alcance | Definido | Contrato V1 v0.2 aprobado |
-| Documentación canónica | En revisión | B00 |
+| Documentación canónica | Vigente | B00 terminado; enlazada desde ambos repositorios |
 | Integridad financiera | Pendiente de prueba completa | Requiere R2–R10 |
 | Seguridad | Riesgo abierto | RLS/exposición Supabase y CORS requieren verificación |
 | Respaldo y recuperación | Bloqueado | Supabase no muestra backups; no existe restauración probada |
@@ -40,7 +40,7 @@
 3. Cada bloque usa una rama propia `agent/{descripcion}`.
 4. Solo un bloque puede estar **en ejecución** por repositorio, salvo independencia demostrada y registrada.
 5. Dos agentes o procesos no pueden modificar simultáneamente el mismo bloque o archivo.
-6. Antes de modificar: revisar rama, estado, cambios existentes, commits recientes y archivos afectados.
+6. Antes de modificar: identificar y leer íntegramente las fuentes canónicas y reglas aplicables al bloque; después revisar rama, estado, cambios existentes, commits recientes y archivos afectados. Registrar el alcance documental consultado en la evidencia del bloque.
 7. No sobrescribir cambios locales o remotos no identificados.
 8. Cada bloque debe tener criterios de aceptación y pruebas antes de implementar.
 9. Compilar no equivale a terminar.
@@ -162,9 +162,9 @@ flowchart TD
 - **Comprobación:** comparar R1–R12, D1–D10 y decisiones obligatorias con el DOCX aprobado.
 - **Repositorio:** Frontend.
 - **Rama:** `agent/v1-master-execution-plan`.
-- **Estado:** En revisión.
+- **Estado:** Terminado.
 - **Pruebas:** validación de enlaces, estructura Markdown y revisión de diff.
-- **Evidencia:** commits de los cuatro documentos y PR documental.
+- **Evidencia:** Frontend PR #2 integrado en `72a7359c`; Backend PR #2 integrado en `4aa17ece`.
 - **Decisión de Felipe:** aprobada ejecución de B00.
 - **Terminado cuando:** PR aprobado e integrado sin cambios funcionales.
 
@@ -172,15 +172,15 @@ flowchart TD
 
 - **Problema:** no existe una fotografía repetible de análisis, pruebas, builds, migraciones y despliegues.
 - **Experiencia actual:** una corrección puede parecer exitosa aunque rompa otra plataforma.
-- **Modificación:** inventario de comandos, resultados, versiones, pruebas y fallos iniciales.
+- **Modificación:** inventario de comandos, resultados, versiones, pruebas y fallos iniciales; CI mínima para repetirlos en GitHub Actions.
 - **Beneficio:** medir progreso real desde el mismo punto.
 - **Riesgo:** confundir fallos de ambiente con defectos de producto.
 - **Comprobación:** ejecución limpia de `flutter analyze`, `flutter test`, `pytest`, compile/import, Alembic heads y builds posibles.
 - **Repositorio:** ambos.
-- **Estado:** Pendiente.
-- **Dependencia:** B00.
-- **Evidencia:** logs sanitizados y matriz base.
-- **Decisión de Felipe:** ninguna.
+- **Estado:** Terminado.
+- **Dependencia:** B00 terminada.
+- **Evidencia:** [`B01_BASELINE_2026-08-15.md`](./EVIDENCE/B01_BASELINE_2026-08-15.md). Frontend y backend completamente verdes en CI; backend con 6 pruebas aprobadas, dependencias fijadas y contenedor reproducible.
+- **Decisión de Felipe:** autorizó la CI mínima el 15 de agosto y el cierre técnico el 16 de agosto de 2026.
 
 ### B02 — Seguridad, exposición y aislamiento
 
@@ -516,13 +516,14 @@ Antes de liberación:
 
 | Bloque | Rama | Commits | PR |
 |---|---|---|---|
-| B00 | `agent/v1-master-execution-plan` | `0189341`, `4a8634b`, `a1b003f` y commit de este plan | Pendiente de creación |
+| B00 | `agent/v1-master-execution-plan` / `agent/link-v1-master-plan` | Frontend `72a7359c`; Backend `4aa17ece` | Frontend #2 y Backend #2, integrados |
+| B01 | `agent/v1-baseline` en ambos repositorios | Frontend `c7fe02cf` más cierre documental; Backend `d93816b1` | Frontend #3 y Backend #3, listos para integrar |
 
 ## 13. Próximo bloque recomendado
 
-1. Aprobar e integrar B00.
-2. Ejecutar B01 — línea base reproducible.
-3. Preparar B02 y B03 antes de modificaciones funcionales.
+1. Integrar los PR #3 de B01.
+2. Preparar B02 leyendo las fuentes canónicas y levantando el inventario de seguridad, exposición y aislamiento sin modificar producción.
+3. Definir criterios y pruebas negativas de B02 antes de implementar correcciones.
 
 ## 14. Historial de estados
 
@@ -531,3 +532,10 @@ Antes de liberación:
 | 2026-08-12 | Contrato | Aprobado y cerrado | Felipe confirmó alcance V1 v0.2 |
 | 2026-08-13 | B00 | Pendiente → En ejecución | Felipe autorizó consolidación documental |
 | 2026-08-13 | B00 | En ejecución → En revisión | Documentos canónicos preparados en rama propia |
+
+| 2026-08-15 | B00 | En revisión → Terminado | PR #2 integrado en frontend y backend enlazado al plan canónico |
+| 2026-08-15 | B01 | Pendiente → En ejecución | Checkouts limpios y primera batería backend ejecutada; frontend/Docker pendientes por entorno |
+| 2026-08-15 | B01 | En ejecución | Felipe autorizó CI mínima reproducible para ambos repositorios |
+| 2026-08-15 | B01 | En ejecución → En revisión | Frontend CI completa aprobada; backend reproduce 5 pruebas aprobadas y 1 smoke fallida, con contenedor aprobado |
+| 2026-08-16 | B01 | En revisión | Felipe autorizó corregir la prueba smoke y fijar dependencias; además priorizó leer y documentar las fuentes aplicables antes de cada cambio |
+| 2026-08-16 | B01 | En revisión → Terminado | CI completamente verde en ambos repositorios; prueba smoke, dependencias reproducibles, documentación y diffs verificados |
