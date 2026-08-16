@@ -517,7 +517,7 @@ Antes de liberación:
 | Bloque | Rama | Commits | PR |
 |---|---|---|---|
 | B00 | `agent/v1-master-execution-plan` / `agent/link-v1-master-plan` | Frontend `72a7359c`; Backend `4aa17ece` | Frontend #2 y Backend #2, integrados |
-| B01 | `agent/v1-baseline` en ambos repositorios | Pendientes de cierre | Frontend #3 en borrador; Backend PR pendiente |
+| B01 | `agent/v1-baseline` en ambos repositorios | Pendientes de cierre | Frontend #3 y Backend #3, en borrador |
 
 ## 13. Próximo bloque recomendado
 
